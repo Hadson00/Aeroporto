@@ -1,0 +1,28 @@
+.mynav{
+    background-color: #135DB4;
+}
+.mynav a{
+    color: white;
+    margin-left: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.titulo{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.selecionar{
+    width:15%;
+}
+
+footer{
+    position: fixed;
+    color: white;
+    background-color: #135DB4;
+    width: 100%;
+}
+footer > p{
+    margin: 0;
+}
