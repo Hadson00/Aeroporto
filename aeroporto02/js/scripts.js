@@ -9,8 +9,8 @@ function limpaTexto(){
 }
 
 function climaAeroporto(){
-    var weather = document.getElementById('state').value;
-    switch(weather) {
+    var state = document.getElementById('state').value;
+    switch(state) {
         case 'SBBU':
             nameState = 'Bauru - SP';
             break;
@@ -30,24 +30,76 @@ function climaAeroporto(){
             nameState = 'Estação Desconhecida';
             break;
     }
-    var div = document.getElementById('result');
-    var url = 'http://servicos.cptec.inpe.br/XML/estacao/' + weather + '/condicoesAtuais.xml';
+    var result = document.getElementById('result');
+    var url = 'http://servicos.cptec.inpe.br/XML/estacao/' + state + '/condicoesAtuais.xml';
     console.log(url);
 
-    var request = new XMLHttpRequest();
-    request.open('GET',url);
-
-    request.onerror = function(e){
-        div.innerHTML = 'Valor invalido!';
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.overrideMimeType("application/xml;charset=utf-8");
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
-    request.onload =()=>{
-        var response=JSON.parse(request.responseText);
-        if(response.erro === true){
-            div.innerHTML = 'Código incorreto!';
+    xmlhttp.onerror = function(){
+        result.innerHTML = 'VALOR INVÁLIDO!';
+    }
+
+    xmlhttp.onload = function() {
+        if (xmlhttp.status === 200) {
+            var xmlDoc = xmlhttp.responseXML;
+            if (xmlDoc) {
+                var metar = xmlDoc.getElementsByTagName("metar")[0];
+                if (metar) {
+                    var codigo = metar.getElementsByTagName("codigo")[0].textContent;
+                    var temperatura = metar.getElementsByTagName("temperatura")[0].textContent;
+                    var atualizacao = metar.getElementsByTagName("atualizacao")[0].textContent;
+                    var descricao = metar.getElementsByTagName("tempo_desc")[0].textContent;
+                    var umidade = metar.getElementsByTagName("umidade")[0].textContent;
+                    var pressao = metar.getElementsByTagName("pressao")[0].textContent;
+                    var sig = metar.getElementsByTagName("tempo")[0].textContent;
+
+
+                    result.innerHTML = `<div>
+                        Código: ${codigo}<br>
+                        Aeroporto: ${nameState}<br>
+                        Atualização: ${atualizacao}<br>
+                        Temperatura: ${temperatura}°C<br>
+                        Sigla: ${sig}<br>
+                        Descrição: ${descricao}<br>
+                        Pressão: ${pressao} mb <br>
+                        Umidade: ${umidade}%<br>
+                        </h5></div>
+                    `;
+                } else {
+                    result.innerHTML = 'Dados não disponíveis para a estação.';
+                }
+            } else {
+                result.innerHTML = 'Erro ao processar a resposta XML.';
+            }
         } else {
-            div.innerHTML = 'Código: ' + response.codigo + '<br>' + 'Atualização :' + response.atualizacao
+            result.innerHTML = 'Erro ao realizar a requisição: ' + xmlhttp.status;
         }
-    }
-    request.send();
+    };
+
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    // var request = new XMLHttpRequest();
+    // request.open('GET',url);
+
+    // request.onerror = function(e){
+    //     result.innerHTML = 'Valor invalido!';
+    // }
+
+    // request.onload =()=>{
+    //     var response=JSON.parse(request.responseText);
+    //     if(response.erro === true){
+    //         result.innerHTML = 'Código incorreto!';
+    //     } else {
+    //         result.innerHTML = 'Código: ' + response.codigo + '<br>' + 'Atualização :' + response.atualizacao
+    //     }
+    // }
+    // request.send();
 }

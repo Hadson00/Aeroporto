@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/scripts.js"></script>
 </head>
-<body>
+<body onload="consultar()">
     <!-- navbar -->
     <nav class="navbar mynav">
       <div class="container-fluid">
@@ -33,19 +32,12 @@
             <option value="SBCB" id="RJ">Cabo Frio - RJ</option>
           </select>
         </div>
-        <button onclick="Consultar()" id="btCallIn" name="btCallIn" type="button" class="btn btn-primary"><b>Consultar</b></button>
+        <button type="submit" name="btCallIn" id="btCallIn" class="btn btn-primary">Consultar</button>
     </div>
-    <br><br>
-    <div class="text-center" >
-      <h4>
-        Digite o código do Aeroporto desejado 
-      </h4>
-      <br>
-      <input type="text" name="clima" id="clima" onfocus="limpaTexto()" maxlength="4" size="5" value="">
-      <button type="button" name="bt" id="bt" class="btn btn-primary"><b>Consultar</b></button>
-      <br><br>
+    <div>
       <div id="result"></div>
     </div>
+    <br><br>
     <!-- fonte -->
     <p class="text-center">Fonte dos dados pesquisados: <a href="http://servicos.cptec.inpe.br/XML/">http://servicos.cptec.inpe.br/XML/</a></p>
     <!-- botao -->
@@ -56,5 +48,6 @@
     <footer class="p-4">
       <p class="text-center">Todos os direitos reservados 2024&copy</p>
     </footer>
+    <script src="./js/scripts.js"></script>
 </body>
 </html>
