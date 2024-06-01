@@ -24,17 +24,27 @@
     <!-- select -->
     <div class="justify-content-center m-5 d-flex">
       <div class="selecionar mx-2">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Selecione o Aeroporto</option>
-            <option value="SBBU">Bauru - SP</option>
-            <option value="SBGR">Guarulhos - SP</option>
-            <option value="3">Uberlândia - MG</option>
-            <option value="SBPA">Salgado Filho - RS</option>
-            <option value="5">Cabo Frio - RJ</option>
+          <select id="state" class="form-select" aria-label="Default select example">
+            <option selected>Aeroportos mais pesquisados</option>
+            <option value="SBBU" id="SP">Bauru - SP</option>
+            <option value="SBCH" id="SC">Chapecó - SC</option>
+            <option value="SBUL" id="MG">Uberlândia - MG</option>
+            <option value="SBPA" id="RS">Salgado Filho - RS</option>
+            <option value="SBCB" id="RJ">Cabo Frio - RJ</option>
           </select>
         </div>
-        <button onclick="Consultar()" id="btConsultar" name="btConsultar" type="submit" class="btn btn-primary">Consultar</button>
-
+        <button onclick="Consultar()" id="btCallIn" name="btCallIn" type="button" class="btn btn-primary"><b>Consultar</b></button>
+    </div>
+    <br><br>
+    <div class="text-center" >
+      <h4>
+        Digite o código do Aeroporto desejado 
+      </h4>
+      <br>
+      <input type="text" name="clima" id="clima" onfocus="limpaTexto()" maxlength="4" size="5" value="">
+      <button type="button" name="bt" id="bt" class="btn btn-primary"><b>Consultar</b></button>
+      <br><br>
+      <div id="result"></div>
     </div>
     <!-- fonte -->
     <p class="text-center">Fonte dos dados pesquisados: <a href="http://servicos.cptec.inpe.br/XML/">http://servicos.cptec.inpe.br/XML/</a></p>
