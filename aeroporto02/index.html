@@ -6,7 +6,13 @@
     <title>Aeroporto</title>
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine.css"></link>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/jasmine-html.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.6.0/boot.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/scripts.js"></script>
+    <script src="./js/test.js"></script>
 </head>
 <body onload="consultar()">
     <!-- navbar -->
@@ -34,7 +40,7 @@
         </div>
         <button type="submit" name="btCallIn" id="btCallIn" class="btn btn-primary">Consultar</button>
     </div>
-    <div>
+    <div class="text-center">
       <div id="result"></div>
     </div>
     <br><br>
@@ -48,6 +54,5 @@
     <footer class="p-4">
       <p class="text-center">Todos os direitos reservados 2024&copy</p>
     </footer>
-    <script src="./js/scripts.js"></script>
 </body>
 </html>
