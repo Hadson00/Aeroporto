@@ -20,8 +20,8 @@ function climaAeroporto(){
         case 'SBUL':
             nameState = 'Uberlândia - MG';
             break;
-        case 'SBPA':
-            nameState = 'Salgado Filho - RS';
+        case 'SBLO':
+            nameState = 'Londrina - PR';
             break;
         case 'SBCB':
             nameState = 'Cabo Frio - RJ';
@@ -61,7 +61,7 @@ function climaAeroporto(){
                     var sig = metar.getElementsByTagName("tempo")[0].textContent;
 
 
-                    result.innerHTML = `<div>
+                    result.innerHTML = `<div style='text-align: center'>
                         Código: ${codigo}<br>
                         Aeroporto: ${nameState}<br>
                         Atualização: ${atualizacao}<br>
