@@ -1,16 +1,24 @@
-function consultar(){
+// ao clicar no botao de id = btCallIn, a função airportWeather é ativada
+function consult(){
     var bt = document.getElementById('btCallIn');
-    bt.onclick = climaAeroporto;
+    bt.onclick = airportWeather;
 }
 
-function limpaTexto(){
-    var texto = document.getElementById('clima');
-    texto.value = '';
+// ao clicar, limpa tanto os dados da div "result", quanto a caixa de opções
+function cleanText(){
+    var texto = document.getElementById('result');
+    texto.innerHTML = '';
 }
 
-function climaAeroporto(){
-    var state = document.getElementById('state').value;
-    switch(state) {
+// função principal, com as seguintes funções:
+// modifica o nome dos estados com base em seus valores
+// busca a url do xml e a altera
+// altera os dados do xml e mostra na div de id = result
+function airportWeather(){
+    // insere os valores das opções do select na variável
+    var state = document.getElementById('state').value; 
+    // substitui os nomes dos estados no resultado final
+    switch(state) { 
         case 'SBBU':
             nameState = 'Bauru - SP';
             break;
@@ -31,7 +39,8 @@ function climaAeroporto(){
             break;
     }
     var result = document.getElementById('result');
-    var url = 'http://servicos.cptec.inpe.br/XML/estacao/' + state + '/condicoesAtuais.xml';
+    // link do xml, substituindo o código da url
+    var url = 'http://servicos.cptec.inpe.br/XML/estacao/' + state + '/condicoesAtuais.xml'; 
     console.log(url);
 
     var xmlhttp;
@@ -51,7 +60,8 @@ function climaAeroporto(){
             var xmlDoc = xmlhttp.responseXML;
             if (xmlDoc) {
                 var metar = xmlDoc.getElementsByTagName("metar")[0];
-                if (metar) {
+                // altera as informações pela tag name dos elementos do xml
+                if (metar) { 
                     var codigo = metar.getElementsByTagName("codigo")[0].textContent;
                     var temperatura = metar.getElementsByTagName("temperatura")[0].textContent;
                     var atualizacao = metar.getElementsByTagName("atualizacao")[0].textContent;
@@ -60,7 +70,7 @@ function climaAeroporto(){
                     var pressao = metar.getElementsByTagName("pressao")[0].textContent;
                     var sig = metar.getElementsByTagName("tempo")[0].textContent;
 
-
+                    // mostra os dados obtidos na div "result"
                     result.innerHTML = `<div style='text-align: center'>
                         Código: ${codigo}<br>
                         Aeroporto: ${nameState}<br>
@@ -85,21 +95,4 @@ function climaAeroporto(){
 
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
-    // var request = new XMLHttpRequest();
-    // request.open('GET',url);
-
-    // request.onerror = function(e){
-    //     result.innerHTML = 'Valor invalido!';
-    // }
-
-    // request.onload =()=>{
-    //     var response=JSON.parse(request.responseText);
-    //     if(response.erro === true){
-    //         result.innerHTML = 'Código incorreto!';
-    //     } else {
-    //         result.innerHTML = 'Código: ' + response.codigo + '<br>' + 'Atualização :' + response.atualizacao
-    //     }
-    // }
-    // request.send();
 }

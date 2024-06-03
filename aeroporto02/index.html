@@ -4,27 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aeroporto</title>
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/estilo.css"> <!-- link do css -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css"> <!-- link do bootstrap em css -->
+    <script src="./js/bootstrap.min.js"></script> <!-- link do bootstrap em JS -->
 </head>
-<body onload="consultar()">
+<body onload="consult()">
     <!-- navbar -->
     <nav class="navbar mynav">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img style="margin-right: 20px;" src="img/aviao.png" alt="Logo" width="45" height="35" class="d-inline-block align-text-top">
+          <img style="margin-right: 20px;" src="img/aviao.png" alt="Logo" width="45" height="35" class="d-inline-block align-text-top"> <!-- logo do site -->
           AirportGuide
         </a>
       </div>
     </nav>
     <!-- titulo -->
-    <h1 class="titulo text-center p-3">Dados Climáticos</h1>
+    <h1 class="titulo text-center p-3">Dados Climáticos</h1> <!-- titulo -->
     <!-- select -->
     <div class="justify-content-center m-5 d-flex align-itens-center">
       <div class="selecionar mx-2">
-          <select id="state" class="form-select" aria-label="Default select example">
-            <option selected>Aeroportos mais pesquisados</option>
+          <select id="state" class="form-select" aria-label="Default select example"> <!-- select para selecionar as opções de Estados desejados -->
+            <option selected>Selecione o Estado</option>
             <option value="SBBU" id="SP">Bauru - SP</option>
             <option value="SBCH" id="SC">Chapecó - SC</option>
             <option value="SBUL" id="MG">Uberlândia - MG</option>
@@ -32,28 +32,23 @@
             <option value="SBCB" id="RJ">Cabo Frio - RJ</option>
           </select>
         </div>
-        <button type="submit" name="btCallIn" id="btCallIn" class="btn btn-primary">Consultar</button>
+        <button type="submit" name="btCallIn" id="btCallIn" class="btn btn-primary">Consultar</button> <!-- botão de consulta para iniciar a funcao "airportWeather()" -->
     </div>
     <div>
-      <div id="result"></div>
+      <div id="result"></div> <!-- div vazia, criada para mostrar os resultados da seleção -->
     </div>
     <br><br>
     <!-- fonte -->
-    <p class="text-center">Fonte dos dados pesquisados: <a href="http://servicos.cptec.inpe.br/XML/">http://servicos.cptec.inpe.br/XML/</a></p>
+    <p class="text-center">Fonte dos dados pesquisados: <a href="http://servicos.cptec.inpe.br/XML/">http://servicos.cptec.inpe.br/XML/</a></p> <!-- link do xml -->
     <!-- botao -->
     <div class="text-center m-5">
-      <button id="btLimpa" name="btLimpa" type="button" class="btn btn-primary">Limpar Seleção</button>
+      <button id="btLimpa" onclick="cleanText()" name="btLimpa" type="button" class="btn btn-primary">Limpar Seleção</button> <!-- botão para limpar os dados e a caixa de opções -->
     </div>
     <!-- footer -->
     <footer class="p-4">
-      <p class="text-center">Todos os direitos reservados 2024&copy</p>
+      <p class="text-center">Todos os direitos reservados 2024&copy</p> <!-- footer com copyright -->
     </footer>
-    <script src="./js/test.js"></script>
-    <script src="./js/scripts.js"></script>
+    <script src="./js/test.js"></script> <!-- link dos testes em jasmine -->
+    <script src="./js/scripts.js"></script> <!-- link do JavaScript -->
 </body>
 </html>
-
-
-
-<!--algumas alterações podem não ter funcionado no meu computador, as vezes eu altero mas não faz nada, é possivel que na maquina de vcs funcionem sem meme
-se caso forem alterações grotestas, falem cmg se n souberem onde mexi-->
