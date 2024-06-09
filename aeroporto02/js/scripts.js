@@ -38,7 +38,6 @@ function airportWeather(){
             nameState = 'Estação Desconhecida';
             break;
     }
-    var result = document.getElementById('result');
     // link do xml, substituindo o código da url
     var url = 'http://servicos.cptec.inpe.br/XML/estacao/' + state + '/condicoesAtuais.xml'; 
     console.log(url);
@@ -62,26 +61,87 @@ function airportWeather(){
                 var metar = xmlDoc.getElementsByTagName("metar")[0];
                 // altera as informações pela tag name dos elementos do xml
                 if (metar) { 
-                    var codigo = metar.getElementsByTagName("codigo")[0].textContent;
-                    var temperatura = metar.getElementsByTagName("temperatura")[0].textContent;
-                    var atualizacao = metar.getElementsByTagName("atualizacao")[0].textContent;
-                    var descricao = metar.getElementsByTagName("tempo_desc")[0].textContent;
-                    var umidade = metar.getElementsByTagName("umidade")[0].textContent;
-                    var pressao = metar.getElementsByTagName("pressao")[0].textContent;
+                    var code = metar.getElementsByTagName("codigo")[0].textContent;
+                    var temperature = metar.getElementsByTagName("temperatura")[0].textContent;
+                    var update = metar.getElementsByTagName("atualizacao")[0].textContent;
+                    var description = metar.getElementsByTagName("tempo_desc")[0].textContent;
+                    var moisture = metar.getElementsByTagName("umidade")[0].textContent;
+                    var pressure = metar.getElementsByTagName("pressao")[0].textContent;
                     var sig = metar.getElementsByTagName("tempo")[0].textContent;
 
                     // mostra os dados obtidos na div "result"
-                    result.innerHTML = `<div style='text-align: center'>
-                        Código: ${codigo}<br>
-                        Aeroporto: ${nameState}<br>
-                        Atualização: ${atualizacao}<br>
-                        Temperatura: ${temperatura}°C<br>
-                        Sigla: ${sig}<br>
-                        Descrição: ${descricao}<br>
-                        Pressão: ${pressao} mb <br>
-                        Umidade: ${umidade}%<br>
-                        </h5></div>
-                    `;
+                    switch(state) { 
+                        case 'SBBU':
+                            var result = document.getElementById('result1')
+                            result.innerHTML = `<div style='text-aling: center'>
+                                Código: ${code}<br>
+                                Aeroporto: ${nameState}<br>
+                                Atualização: ${update}<br>
+                                Temperatura: ${temperature} ºC<br>
+                                Sigla: ${sig}<br>
+                                Descrição: ${description}<br>
+                                Pressão: ${pressure} mb <br>
+                                Umidade: ${moisture}<br>
+                                </div>
+                            `;
+                            break;
+                        case 'SBCH':
+                            var result = document.getElementById('result2')
+                            result.innerHTML = `<div style='text-aling: center'>
+                                Código: ${code}<br>
+                                Aeroporto: ${nameState}<br>
+                                Atualização: ${update}<br>
+                                Temperatura: ${temperature} ºC<br>
+                                Sigla: ${sig}<br>
+                                Descrição: ${description}<br>
+                                Pressão: ${pressure} mb <br>
+                                Umidade: ${moisture}<br>
+                                </div>
+                            `;
+                            break;
+                        case 'SBUL':
+                            var result = document.getElementById('result3')
+                            result.innerHTML = `<div style='text-aling: center'>
+                                Código: ${code}<br>
+                                Aeroporto: ${nameState}<br>
+                                Atualização: ${update}<br>
+                                Temperatura: ${temperature} ºC<br>
+                                Sigla: ${sig}<br>
+                                Descrição: ${description}<br>
+                                Pressão: ${pressure} mb <br>
+                                Umidade: ${moisture}<br>
+                                </div>
+                            `;
+                            break;
+                        case 'SBLO':
+                            var result = document.getElementById('result5')
+                            result.innerHTML = `<div style='text-aling: center'>
+                                Código: ${code}<br>
+                                Aeroporto: ${nameState}<br>
+                                Atualização: ${update}<br>
+                                Temperatura: ${temperature} ºC<br>
+                                Sigla: ${sig}<br>
+                                Descrição: ${description}<br>
+                                Pressão: ${pressure} mb <br>
+                                Umidade: ${moisture}<br>
+                                </div>
+                            `;
+                            break;
+                        case 'SBCB':
+                            var result = document.getElementById('result4')
+                            result.innerHTML = `<div style='text-aling: center'>
+                                Código: ${code}<br>
+                                Aeroporto: ${nameState}<br>
+                                Atualização: ${update}<br>
+                                Temperatura: ${temperature} ºC<br>
+                                Sigla: ${sig}<br>
+                                Descrição: ${description}<br>
+                                Pressão: ${pressure} mb <br>
+                                Umidade: ${moisture}<br>
+                                </div>
+                            `;
+                            break;
+                    }
                 } else {
                     result.innerHTML = 'Dados não disponíveis para a estação.';
                 }

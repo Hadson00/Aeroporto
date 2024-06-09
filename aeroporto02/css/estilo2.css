@@ -1,0 +1,25 @@
+.mynav{
+    display: flex;
+    justify-content: flex-start;
+    background-color: #0053B5;
+}
+
+.cont{
+    background-color: #E6F4F1;
+}
+footer{
+    color: white;
+    background-color:#0053B5;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: inherit,oblique;  
+}
+
+.sobre{
+    background-color: #F2FAFF;
+    color: black;
+}
+
+.inicio{
+    background-color: #F2FAFF;
+}
